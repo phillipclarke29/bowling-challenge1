@@ -63,7 +63,19 @@ describe('Game', function() {
     game.roll(0);
     game.roll(1);
     game.roll(1);
-    expect(game.totalGameScore()).toEqual(42);
+    expect(game.totalGameScore()).toEqual(44);
+  });
+
+  it('adds the bonus for three stikes in a row', function() {
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(1);
+    game.roll(1);
+    expect(game.totalGameScore()).toEqual(74);
   });
 
   it('adds the bonus for a spare at the end of the following frame', function() {

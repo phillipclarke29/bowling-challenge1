@@ -12,10 +12,20 @@ Game.prototype.totalGameScore = function() {
   // var totalstrikeBonus = (this._findStrikes() || 0);
   var totalSpareBonus = (this._findSpares() || 0);
   // var totalTwoStrikesbonus = (this._findTwoStrikes() || 0);
-  var totalScore = this.rolls.reduce(add, 0);
-  function add(a, b) {
-    return a + b;
-  } return totalScore + totalSpareBonus + this._findStrikes() + this._findTwoStrikes();
+  // var totalScore = this.rolls.reduce(add, 0);
+  // function add(a, b) {
+  //   return a + b;
+  // }
+
+  return totalSpareBonus + this._findStrikes() + this._findTwoStrikes() + this._totalScores();
+};
+
+Game.prototype._totalScores = function() {
+  var totalScore = 0;
+    this.rolls.map(function(item){
+    totalScore += item;
+  });
+  return totalScore;
 };
 
 Game.prototype.currentGameRoll = function() {
@@ -59,3 +69,5 @@ Game.prototype._findSpares = function() {
     }
   }
 };
+
+Game.prototype._LastFrameScore
