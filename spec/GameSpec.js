@@ -1,31 +1,77 @@
 describe('Game', function() {
-  var frameCount = 0;
-  var totalGameScore = 0;
+  var rolls = [];
+  var currentFrame = 0;
 
   beforeEach(function() {
     game = new Game();
-    frame = new Frame();
   });
 
   it('allows you to add a score to a game', function() {
-    game.score(5, 5);
-    expect(game.totalGameScore).toEqual(10);
+    game.roll(5);
+    expect(game.rolls.length).toEqual(1);
+
   });
 
-  it('keeps a track of the total score', function() {
-    game.score(5, 5);
-    frame = new Frame();
-    game.score(5, 5);
-    expect(game.totalGameScore).toEqual(20);
+  it('gives you the total current score for the game without strikes', function() {
+    game.roll(5);
+    game.roll(9);
+    expect(game.totalGameScore()).toEqual(14);
+
   });
 
-  it('counts the number of frames', function() {
-    game.score(5, 5);
-    frame = new Frame;
-    game.score(5, 5);
-    expect(game.frameCount).toEqual(2);
+  it('tells you the current roll', function() {
+    game.roll(5);
+    game.roll(9);
+    game.roll(5);
+    game.roll(9);
+    game.roll(5);
+    expect(game.currentGameRoll()).toEqual(5);
+
   });
 
+  it('tells you the current frame', function() {
+    game.roll(5);
+    game.roll(9);
+    game.roll(5);
+    game.roll(9);
+    game.roll(5);
+    expect(game.currentGameFrame()).toEqual(3);
+  });
 
+  it('adds the bonus for a strike at the end of the following frame', function() {
+    game.roll(10);
+    game.roll(0);
+    game.roll(8);
+    game.roll(1);
+    expect(game.totalGameScore()).toEqual(28);
+  });
+
+  it('does not add a strike bonus if 10 is scored in the second roll of a frame', function() {
+    game.roll(0);
+    game.roll(0);
+    game.roll(0);
+    game.roll(10);
+    game.roll(1);
+    game.roll(1);
+    expect(game.totalGameScore()).toEqual(13);
+  });
+
+  it('adds the bonus for two stikes in a row', function() {
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(1);
+    game.roll(1);
+    expect(game.totalGameScore()).toEqual(42);
+  });
+
+  it('adds the bonus for a spare at the end of the following frame', function() {
+    game.roll(2);
+    game.roll(8);
+    game.roll(8);
+    game.roll(1);
+    expect(game.totalGameScore()).toEqual(27);
+  });
 
 });
