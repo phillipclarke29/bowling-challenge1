@@ -8,16 +8,13 @@ Game.prototype.roll = function(hits) {
   this.rolls[this.currentRoll++] = hits;
 };
 
-Game.prototype.totalGameScore = function() {
-  // var totalstrikeBonus = (this._findStrikes() || 0);
-  var totalSpareBonus = (this._findSpares() || 0);
-  // var totalTwoStrikesbonus = (this._findTwoStrikes() || 0);
-  // var totalScore = this.rolls.reduce(add, 0);
-  // function add(a, b) {
-  //   return a + b;
-  // }
+Game.prototype._totalGameScore = function() {
+  if (this.currentRoll < 10) {
+    var totalSpareBonus = (this._findSpares() || 0);
+    return totalSpareBonus + this._findStrikes() + this._findTwoStrikes() + this._totalScores();
+  } else {
 
-  return totalSpareBonus + this._findStrikes() + this._findTwoStrikes() + this._totalScores();
+  }
 };
 
 Game.prototype._totalScores = function() {
@@ -70,4 +67,27 @@ Game.prototype._findSpares = function() {
   }
 };
 
-Game.prototype._LastFrameScore
+Game.prototype._LastFrameScore = function() {
+var lastFrameTotal = 0;
+  if (this.rolls[18] === 10) {
+    console.log(this.rolls[20])
+    console.log("you scored a strike in the last frame.");
+    console.log("Please roll another frame!");
+    console.log(this.rolls[20]);
+    if (this.rolls[20] == 10) {
+      console.log(this.rolls[21]);
+      lastFrameTotal = (20 + (this.rolls[21]));
+      console.log(lastFrameTotal);
+    }   else {
+    console.log("This your last throw")
+
+  }
+  console.log(this.totalGameScore());
+  
+ return lastFrameTotal + this.totalGameScore();
+};
+
+
+
+
+};

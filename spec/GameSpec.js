@@ -86,4 +86,30 @@ describe('Game', function() {
     expect(game.totalGameScore()).toEqual(27);
   });
 
+  it('calculates the perfect game', function() {
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(10);
+    expect(game._LastFrameScore()).toEqual(300);
+  });
+
 });
