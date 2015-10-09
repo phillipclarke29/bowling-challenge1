@@ -12,13 +12,12 @@ Game.prototype.roll = function(hits) {
 Game.prototype._totalGameScore = function() {
   if (this.currentRoll < 21) {
     return this._findSpares() + this._findStrikes() + this._findTwoStrikes() + this._totalScores();
-  } else {
   }
 };
 
 Game.prototype._totalScores = function() {
   var totalScore = 0;
-    this.rolls.map(function(item){
+  this.rolls.map(function(item) {
     totalScore += item;
   });
   return totalScore;
@@ -68,6 +67,7 @@ Game.prototype._findSpares = function() {
 };
 
 Game.prototype._lastRoll = function(num) {
+  console.log(this.rolls[18]);
   this.lastHits.push(num);
   lastHitsFloat = 0;
   sum = this.lastHits.reduce(function(a, b) {return a + b;});
@@ -76,6 +76,5 @@ Game.prototype._lastRoll = function(num) {
 
 Game.prototype._grandTotal = function() {
   return sum + this._totalGameScore();
-
 
 };
