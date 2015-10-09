@@ -12,6 +12,10 @@ Game.prototype.roll = function(hits) {
 Game.prototype._totalGameScore = function() {
   if (this.currentRoll < 21) {
     return this._findSpares() + this._findStrikes() + this._findTwoStrikes() + this._totalScores();
+  } else if (this.currentroll === 19 && this.roll[19] === 10) {
+    console.log('You got a strike on your last frame - you get two extra rolls');
+  } else {
+    console.log('Game Over');
   }
 };
 
@@ -67,11 +71,9 @@ Game.prototype._findSpares = function() {
 };
 
 Game.prototype._lastRoll = function(num) {
-  console.log(this.rolls[18]);
   this.lastHits.push(num);
   lastHitsFloat = 0;
   sum = this.lastHits.reduce(function(a, b) {return a + b;});
-
 };
 
 Game.prototype._grandTotal = function() {
