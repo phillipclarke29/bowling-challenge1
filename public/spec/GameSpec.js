@@ -6,7 +6,7 @@ describe('Game', function() {
     game = new Game();
   });
 
-  it('allows you to add a score to a game', function() {
+  it('allows you to add new a score to a game', function() {
     game.roll(5);
     expect(game._totalGameScore()).toEqual(5);
 
@@ -44,30 +44,6 @@ describe('Game', function() {
     game.roll(8);
     game.roll(1);
     expect(game._totalGameScore()).toEqual(28);
-  });
-
-  it('gives the score for a spare in the first frame when no other rolls have occured', function() {
-    game.roll(5);
-    game.roll(5);
-    expect(game._totalGameScore()).toEqual(10);
-  });
-
-  it('adds the bonus for a spare in first frame', function() {
-    game.roll(5);
-    game.roll(5);
-    game.roll(5);
-    game.roll(1);
-    expect(game._totalGameScore()).toEqual(21);
-  });
-
-  it('adds the bonus for a strike followed by a spare', function() {
-    game.roll(10);
-    game.roll(0);
-    game.roll(5);
-    game.roll(5);
-    game.roll(5);
-    game.roll(1);
-    expect(game._totalGameScore()).toEqual(41);
   });
 
   it('does not add a strike bonus if 10 is scored in the second roll of a frame', function() {

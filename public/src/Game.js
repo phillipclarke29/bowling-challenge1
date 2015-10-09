@@ -1,5 +1,5 @@
 var Game = function() {
-  this.rolls = [];
+  this.rolls = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,];
   this.currentRoll = 0;
   this.lastHits = [];
   this.sum = 0;
@@ -12,8 +12,8 @@ Game.prototype.roll = function(hits) {
 Game.prototype._totalGameScore = function() {
   if (this.currentRoll < 21) {
     return this._findSpares() + this._findStrikes() + this._findTwoStrikes() + this._totalScores();
-  } else if (this.currentroll === 19 && this.roll[19] === 10) {
-    console.log('You got a strike on your last frame - you get two extra rolls');
+  } else if (this.currentRoll === 19 && this.roll[19] === 10) {
+    console.log('You got a strike in your last frame - you get two extra rolls');
   } else {
     console.log('Game Over');
   }
@@ -63,8 +63,9 @@ Game.prototype._findSpares = function() {
   var totalSpareBonus = totalSpareBonus || 0;
   for (i = 0; i < this.rolls.length; i++) {
     if ((i % 2 != 0)) {
-      if ((this.rolls[i] + this.rolls[i - 1] === 10) && (this.rolls[i - 1] != 10)) {
-        return (this.rolls[i + 1]);
+
+      if ((this.rolls[i] + this.rolls[i - 1] === 10) && (this.rolls[i - 1] !== 10)) {
+        totalSpareBonus = totalSpareBonus + (this.rolls[i + 1]);
       }
     }
   } return totalSpareBonus;
