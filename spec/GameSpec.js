@@ -86,6 +86,30 @@ describe('Game', function() {
     expect(game._totalGameScore()).toEqual(27);
   });
 
+  it('calculates the a game up to the last frame with perfect scores', function() {
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    game.roll(10);
+    game.roll(0);
+    expect(game._totalGameScore()).toEqual(280);
+  });
+
   it('calculates the perfect game', function() {
     game.roll(10);
     game.roll(0);
@@ -107,9 +131,9 @@ describe('Game', function() {
     game.roll(0);
     game.roll(10);
     game.roll(0);
-    game.roll(10);
-    game.roll(10);
-    expect(game._LastFrameScore()).toEqual(300);
+    game._lastRoll(10);
+    game._lastRoll(10);
+    expect(game._grandTotal()).toEqual(300);
   });
 
 });
