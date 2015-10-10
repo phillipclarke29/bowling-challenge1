@@ -1,6 +1,6 @@
 describe('Game', function() {
-  var rolls = [];
-  var currentFrame = 0;
+  // var rolls = [];
+  // var currentRoll = 0;
 
   beforeEach(function() {
     game = new Game();
