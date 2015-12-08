@@ -1,16 +1,18 @@
 
-Bowling Challenge
+##Bowling Challenge
 =================
 
 This is week 6's weekend challenge.  A full list of instructions is found below.
 
-User Story
+#User Story
 
     As a user I want to be able to score my game of bowling I want to:-
-      enter the number of pins I have knocked down after each roll
-      know my score at any point in the game
-      record strikes and spares
-      get a final score
+    - enter the number of pins I have knocked down after each roll
+    - know my score at any point in the game
+    - record strikes and spares
+    - get a final score
+
+#How to score a game
 
 To run the game in the console please use the following commands:-
 
@@ -23,7 +25,11 @@ game.<underscore>totalGameScore to calculate the score at any time in the game
 game.<underscore>lastroll(score) to enter the bonus frame rolls in the event of a strike in the 10th frame
 game.<underscore>grandtotal
 
-The game has a full set of passing tests using Jasmine.
+#Tests
+
+The game has a full set of passing tests using Jasmine.  To run the tests go to the command line and type open SpecRunner.html.
+
+#Approach
 
 We have used a single class of Game to record the rolls, frames, strikes, spares and the overall score.
 Individual rolls are recorded in an array.  
@@ -34,7 +40,15 @@ For the spares, we check the odd items in findSpares using (i % 2 != 0) and then
 
 We are hoping to adjust the display at the front end to change the strikes with a value of 20 back to 10 for the purposes of consistency.  We also plan to use javascript to enter the Zeros after a strike has been recorded.
 
-If a strike is recorded in the 10th frame two extra rolls can be recorded.  The scores for these two extra rolls are added to the overall total to deliver a grandtotal.
+If a strike is recorded in the 10th frame two extra rolls can be recorded.  The scores for these two extra rolls are added to the overall total to deliver a grand total.
+
+#Possible further steps
+
+Although it is not specified it would be desirable to create an HTML based front end.
+
+We would also like to keep a running total of scores on a database
+
+
 
 
 
