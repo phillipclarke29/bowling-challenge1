@@ -71,9 +71,9 @@ describe('Game', function() {
   });
 
   it('does not add a strike bonus if 10 is scored in the second roll of a frame', function() {
-    game.roll(0);
-    game.roll(0);
-    game.roll(0);
+    for(i = 0; i < 3; i++) {
+       game.roll(0);
+     };
     game.roll(10);
     game.roll(1);
     game.roll(1);
@@ -91,12 +91,10 @@ describe('Game', function() {
   });
 
   it('adds the bonus for three stikes in a row', function() {
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
+    for(i = 0; i < 3; i++) {
+       game.roll(10);
+       game.roll(0);
+     };
     game.roll(1);
     game.roll(1);
     expect(game._totalGameScore()).toEqual(74);
@@ -111,50 +109,20 @@ describe('Game', function() {
   });
 
   it('calculates the a game up to the last frame with perfect scores', function() {
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
+    for(i = 0; i < 9; i++) {
+       game.roll(10);
+       game.roll(0);
+     };
     game.roll(10);
     game.roll(0);
     expect(game._totalGameScore()).toEqual(280);
   });
 
   it('calculates the perfect game', function() {
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
+    for(i = 0; i < 10; i++) {
+       game.roll(10);
+       game.roll(0);
+     };
     game._lastRoll(10);
     game._lastRoll(10);
     expect(game._grandTotal()).toEqual(300);
