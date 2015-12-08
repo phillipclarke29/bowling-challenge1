@@ -50,15 +50,12 @@ We would also like to keep a running total of scores on a database
 
 
 
-
-
-
-##Original Challenge
+#Original Challenge
 
     Test time: Friday, the entire day and the entire of lab week if you need it.
     Feel free to use Google, your notes, and your books.
 
-Task:
+##Task:
 -----
 
 Count and sum the scores of a bowling game for one player (in JavaScript).
