@@ -14,6 +14,8 @@ User Story
 
 To run the game in the console please use the following commands:-
 
+Go to the root folder in the command line and type open index.html.  Open up the console and use the following commands.
+
 game = new Game
 game.roll(score)
 game.rolls (lists all balls rolled)
