@@ -20,10 +20,10 @@ describe('Game', function() {
   });
 
   it('tells you the current roll', function() {
-    game.roll(5);
-    game.roll(9);
-    game.roll(5);
-    game.roll(9);
+    for(i = 0; i < 2; i++) {
+       game.roll(5);
+       game.roll(9);
+     };
     game.roll(5);
     expect(game.currentGameRoll()).toEqual(5);
 
@@ -53,9 +53,9 @@ describe('Game', function() {
   });
 
   it('adds the bonus for a spare in first frame', function() {
-    game.roll(5);
-    game.roll(5);
-    game.roll(5);
+    for(i = 0; i < 3; i++) {
+       game.roll(5);
+     };
     game.roll(1);
     expect(game._totalGameScore()).toEqual(21);
   });
@@ -63,9 +63,9 @@ describe('Game', function() {
   it('adds the bonus for a strike followed by a spare', function() {
     game.roll(10);
     game.roll(0);
-    game.roll(5);
-    game.roll(5);
-    game.roll(5);
+    for(i = 0; i < 3; i++) {
+       game.roll(5);
+     };
     game.roll(1);
     expect(game._totalGameScore()).toEqual(41);
   });
@@ -81,10 +81,10 @@ describe('Game', function() {
   });
 
   it('adds the bonus for two stikes in a row', function() {
-    game.roll(10);
-    game.roll(0);
-    game.roll(10);
-    game.roll(0);
+    for(i = 0; i < 2; i++) {
+      game.roll(10);
+      game.roll(0);
+     };
     game.roll(1);
     game.roll(1);
     expect(game._totalGameScore()).toEqual(44);
