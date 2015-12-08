@@ -22,20 +22,14 @@ describe('Game', function() {
   it('tells you the current roll', function() {
     game.roll(5);
     game.roll(9);
-    game.roll(5);
-    game.roll(9);
-    game.roll(5);
-    expect(game.currentGameRoll()).toEqual(5);
+    expect(game.currentGameRoll()).toEqual(2);
 
   });
 
   it('tells you the current frame', function() {
     game.roll(5);
     game.roll(9);
-    game.roll(5);
-    game.roll(9);
-    game.roll(5);
-    expect(game.currentGameFrame()).toEqual(3);
+    expect(game.currentGameFrame()).toEqual(1);
   });
 
   it('adds the bonus for a strike at the end of the following frame', function() {
@@ -67,6 +61,8 @@ describe('Game', function() {
   });
 
   it('adds the bonus for three stikes in a row', function() {
+
+
     game.roll(10);
     game.roll(0);
     game.roll(10);
